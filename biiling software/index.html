@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Billing System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-calculator"></i> Advanced Billing System</h1>
+            <div class="header-controls">
+                <button id="new-invoice" class="btn"><i class="fas fa-file-alt"></i> New Invoice</button>
+                <button id="print-invoice" class="btn"><i class="fas fa-print"></i> Print</button>
+            </div>
+        </header>
+
+        <div class="invoice-info">
+            <div class="invoice-meta">
+                <div class="form-group">
+                    <label for="invoice-number">Invoice #</label>
+                    <input type="text" id="invoice-number" value="INV-0001" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="invoice-date">Date</label>
+                    <input type="date" id="invoice-date">
+                </div>
+                <div class="form-group">
+                    <label for="due-date">Due Date</label>
+                    <input type="date" id="due-date">
+                </div>
+            </div>
+
+            <div class="client-info">
+                <div class="form-group">
+                    <label for="client-name">Client Name</label>
+                    <input type="text" id="client-name" placeholder="Enter client name">
+                </div>
+                <div class="form-group">
+                    <label for="client-email">Client Email</label>
+                    <input type="email" id="client-email" placeholder="Enter client email">
+                </div>
+                <div class="form-group">
+                    <label for="client-phone">Client Phone</label>
+                    <input type="tel" id="client-phone" placeholder="Enter client phone">
+                </div>
+                <div class="form-group">
+                    <label for="client-address">Client Address</label>
+                    <textarea id="client-address" placeholder="Enter client address"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="invoice-items">
+            <table id="items-table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Tax</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="item-row">
+                        <td><input type="text" class="item-name" placeholder="Item name"></td>
+                        <td><input type="text" class="item-desc" placeholder="Description"></td>
+                        <td><input type="number" class="item-qty" min="1" value="1"></td>
+                        <td><input type="number" class="item-price" min="0" step="0.01" placeholder="0.00"></td>
+                        <td>
+                            <select class="item-tax">
+                                <option value="0">0%</option>
+                                <option value="5">5%</option>
+                                <option value="10">10%</option>
+                                <option value="18">18%</option>
+                                <option value="20">20%</option>
+                            </select>
+                        </td>
+                        <td class="item-total">0.00</td>
+                        <td><button class="remove-item btn-small"><i class="fas fa-trash"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button id="add-item" class="btn"><i class="fas fa-plus"></i> Add Item</button>
+        </div>
+
+        <div class="invoice-summary">
+            <div class="summary-notes">
+                <label for="notes">Notes</label>
+                <textarea id="notes" placeholder="Any additional notes..."></textarea>
+            </div>
+            <div class="summary-totals">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Tax:</span>
+                    <span id="tax-total">0.00</span>
+                </div>
+                <div class="summary-row discount-row">
+                    <span>Discount:</span>
+                    <div class="discount-controls">
+                        <input type="number" id="discount-value" min="0" step="1" value="0" style="width: 50px;">
+                        <select id="discount-type">
+                            <option value="percent">%</option>
+                            <option value="fixed">$</option>
+                        </select>
+                    </div>
+                    <span id="discount-amount">0.00</span>
+                </div>
+                <div class="summary-row grand-total">
+                    <span>Total:</span>
+                    <span id="grand-total">0.00</span>
+                </div>
+                <div class="payment-method">
+                    <label for="payment-method">Payment Method:</label>
+                    <select id="payment-method">
+                        <option value="cash">Cash</option>
+                        <option value="credit">Card</option>
+                        <option value="bank">Bank Transfer</option>
+                        <option value="check">UPI</option>
+                        <option value="other">Credit</option>
+                    </select>
+                </div>
+                <button id="save-invoice" class="btn"><i class="fas fa-save"></i> Save Invoice</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
